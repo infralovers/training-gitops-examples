@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook
+  labels:
+    app.kubernetes.io/name: guestbook
+    app.kubernetes.io/component: frontend
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: guestbook
+      app.kubernetes.io/component: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: guestbook
+        app.kubernetes.io/component: frontend
+    spec:
+      containers:
+      - name: guestbook
+        image: gitlab-registry.trusting-bunny.commandemy.training/git-user-01/guestbook-application:REPLACEME
+        env:
+        - name: REDIS-SERVICE-NAME
+          value: redis
+        ports:
+        - name: http-server
+          containerPort: 3000
+      imagePullSecrets:
+      - name: regcred

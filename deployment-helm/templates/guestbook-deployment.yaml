@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-{{ .Chart.AppVersion }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.frontend.labels.name }}
+    app.kubernetes.io/component: {{ .Values.frontend.labels.component }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.frontend.labels.name }}
+      app.kubernetes.io/component: {{ .Values.frontend.labels.component }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.frontend.labels.name }}
+        app.kubernetes.io/component: {{ .Values.frontend.labels.component }}
+    spec:
+      containers:
+      - name: {{ .Values.frontend.name }}
+        image: {{ .Values.frontend.containerRegistry }}/{{ .Values.frontend.containerImage}}:{{ .Chart.AppVersion }}
+        env:
+        - name: REDIS-SERVICE-NAME
+          value: {{ .Values.backend.name }}-{{ .Chart.AppVersion }}
+        ports:
+        - name: http-server
+          containerPort: {{ .Values.frontend.port }}
+      imagePullSecrets:
+      - name: regcred

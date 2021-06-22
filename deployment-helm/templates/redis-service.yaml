@@ -1,0 +1,15 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.backend.name }}-{{ .Chart.AppVersion }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.backend.labels.name }}
+    app.kubernetes.io/component: {{ .Values.backend.labels.component }}
+spec:
+  ports:
+  - port: {{ .Values.backend.port }}
+    targetPort: redis-server
+  selector:
+    app.kubernetes.io/name: {{ .Values.backend.labels.name }}
+    app.kubernetes.io/component: {{ .Values.backend.labels.component }}

@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-{{ .Chart.AppVersion }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.frontend.labels.name }}
+    app.kubernetes.io/component: {{ .Values.frontend.labels.component }}
+spec:
+  ports:
+  - port: {{ .Values.frontend.port }}
+    targetPort: http-server
+  selector:
+    app.kubernetes.io/name: {{ .Values.frontend.labels.name }}
+    app.kubernetes.io/component: {{ .Values.frontend.labels.component }}
+  type: LoadBalancer

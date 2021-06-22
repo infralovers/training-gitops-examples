@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: gitlab-registry.trusting-bunny.commandemy.training/git-user-01/guestbook-application:REPLACEME
+        image: gitlab-registry.<ENV-ANIMAL>.commandemy.training/git-user-<ENV-USER-ID>/guestbook-application:REPLACEME
         env:
         - name: REDIS-SERVICE-NAME
           value: redis

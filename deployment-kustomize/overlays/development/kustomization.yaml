@@ -4,6 +4,6 @@ kind: Kustomization
 bases:
   - ../../base
 images:
-- name: gitlab-registry.trusting-bunny.commandemy.training/git-user-01/guestbook-application
+- name: gitlab-registry.<ENV-ANIMAL>.commandemy.training/git-user-<ENV-USER-ID>/guestbook-application
   newTag: "1" # {"$imagepolicy": "flux-system:guestbook:tag"}
 

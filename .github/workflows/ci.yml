@@ -108,7 +108,7 @@ jobs:
       with:
           builder: ${{ steps.buildx.outputs.name }}
           context: ./docker-image/
-          file: ./Dockerfile
+          file: ./docker-image/Dockerfile
           push: ${{ github.event_name != 'pull_request' && needs.prebuild.outputs.version != '' }}
           tags: ${{ steps.prep.outputs.tags }}
           platforms: 'arm64,amd64'

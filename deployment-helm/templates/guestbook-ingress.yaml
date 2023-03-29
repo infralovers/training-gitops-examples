@@ -4,8 +4,7 @@ kind: Ingress
 metadata:
   name: {{ .Chart.Name }}-{{ .Chart.AppVersion }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: "public"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
   - http:

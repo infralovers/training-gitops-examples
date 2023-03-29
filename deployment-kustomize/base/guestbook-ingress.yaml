@@ -3,9 +3,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: guestbook
+  namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: "public"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
   - http:

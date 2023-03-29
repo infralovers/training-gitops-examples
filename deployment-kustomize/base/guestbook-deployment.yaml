@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: guestbook
+  namespace: default
   labels:
     app.kubernetes.io/name: guestbook
     app.kubernetes.io/component: frontend
@@ -20,7 +21,7 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: gitlab-registry.<ENV-GITLAB-DOMAIN>/git-user-<ENV-USER-ID>/guestbook-application:REPLACEME
+        image: registry.gitlab.<ENV-ANIMAL>.commandemy.training/git-user-<ENV-USER-ID>/guestbook-application:1
         env:
         - name: REDIS-SERVICE-NAME
           value: redis

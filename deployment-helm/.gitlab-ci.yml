@@ -6,12 +6,12 @@ stages:
 
 deploy:
   stage: deploy
-  image: dtzar/helm-kubectl:3.5.0
+  image: dtzar/helm-kubectl:3.11.2
   before_script:
     - mkdir -p /etc/deploy
     - echo ${my_kube_config} | base64 -d > ${KUBECONFIG}
   script:
     - helm upgrade guestbook . --install --values=values.yaml
   rules:
-    - if: $CI_COMMIT_BRANCH == 'master'
+    - if: $CI_COMMIT_BRANCH == 'main'
       when: always

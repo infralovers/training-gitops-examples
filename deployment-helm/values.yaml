@@ -4,7 +4,7 @@
 
 frontend:
   name: guestbook
-  containerRegistry: gitlab-registry.<ENV-GITLAB-DOMAIN>/git-user-<ENV-USER-ID>
+  containerRegistry: registry.gitlab.<ENV-ANIMAL>.commandemy.training/git-user-<ENV-USER-ID>
   containerImage: guestbook-application
   replicaCount: 1
   port: 3000

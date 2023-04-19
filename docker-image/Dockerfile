@@ -1,13 +1,12 @@
-FROM golang:1.10.0
+FROM golang:1.20.0
 
 ENV REDIS-SERVICE-NAME="redis"
 
-RUN go get github.com/codegangsta/negroni \
-  github.com/gorilla/mux \
-  github.com/xyproto/simpleredis
+
 WORKDIR /app
-ADD ./main.go .
-RUN CGO_ENABLED=0 GOOS=linux go build -o main .
+ADD go.* ./main.go .
+RUN go mod download \
+    && CGO_ENABLED=0 GOOS=linux go build -o main .
 
 FROM scratch
 WORKDIR /app

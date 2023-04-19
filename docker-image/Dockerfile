@@ -4,7 +4,7 @@ ENV REDIS-SERVICE-NAME="redis"
 
 
 WORKDIR /app
-ADD go.* ./main.go .
+ADD go.* main.go ./
 RUN go mod download \
     && CGO_ENABLED=0 GOOS=linux go build -o main .
 

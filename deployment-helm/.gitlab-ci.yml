@@ -1,5 +1,6 @@
 variables:
   KUBECONFIG: /etc/deploy/config
+  HELM_VALUES: values.yaml
 
 stages:
   - deploy
@@ -11,7 +12,7 @@ deploy:
     - mkdir -p /etc/deploy
     - echo ${my_kube_config} | base64 -d > ${KUBECONFIG}
   script:
-    - helm upgrade guestbook . --install --values=values.yaml
+    - helm upgrade guestbook . --install --values=${HELM_VALUES}
   rules:
     - if: $CI_COMMIT_BRANCH == 'main'
       when: always

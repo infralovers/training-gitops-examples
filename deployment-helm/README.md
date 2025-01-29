@@ -1,7 +1,34 @@
-https://helm.sh/docs/chart_template_guide/getting_started/
+# Helm Chart Example
 
-helm install guestbook ./deployment-helm
+[https://helm.sh/docs/chart_template_guide/getting_started/]
+
+## Installation
+
+```shell
+helm upgrade --install guestbook ./
+```
+
+## Review installed release
+
+```shell
 helm get manifest guestbook
-helm uninstall guestbook
+helm get values guestbook
+```
 
-helm install --debug --dry-run guestbook ./deployment-helm
+## Uinstall release
+
+```shell
+helm uninstall guestbook
+```
+
+## Template
+
+```shell
+helm template guestbook ./
+```
+
+## Dry-run
+
+```shell
+helm install --debug --dry-run guestbook ./
+```

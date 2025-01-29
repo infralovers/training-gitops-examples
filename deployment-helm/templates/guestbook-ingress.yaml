@@ -2,17 +2,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Chart.Name }}-{{ .Chart.AppVersion }}
+  name: {{ .Release.Name }}-{{ .Values.frontend.name }}-{{ .Chart.AppVersion }}
+  namespace: {{ .Release.Namespace }}
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - http:
+  - host: {{ .Values.frontend.host }}
+    http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: {{ .Chart.Name }}-{{ .Chart.AppVersion }}
+            name: {{ .Release.Name }}-{{ .Values.frontend.name }}-{{ .Chart.AppVersion }}
             port:
               number: {{ .Values.frontend.port }}

@@ -7,6 +7,7 @@ frontend:
   containerRegistry: registry.gitlab.<ENV-ANIMAL>.<ENV-DOMAIN>/git-user-<ENV-USER-ID>
   containerImage: guestbook-application
   replicaCount: 1
+  host: <ENV-NAME>-<ENV-USER-ID>-01.<ENV-ANIMAL>.<ENV-DOMAIN>
   port: 3000
   labels:
     name: guestbook

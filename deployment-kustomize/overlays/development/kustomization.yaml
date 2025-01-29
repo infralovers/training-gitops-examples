@@ -2,7 +2,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
+  - ../../base/redis
+  - ../../base/app
 images:
 - name: registry.gitlab.<ENV-ANIMAL>.<ENV-DOMAIN>/git-user-<ENV-USER-ID>/guestbook-application
   newTag: "1" # {"$imagepolicy": "flux-system:guestbook:tag"}

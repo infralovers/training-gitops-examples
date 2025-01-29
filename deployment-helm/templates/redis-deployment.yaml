@@ -2,7 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.backend.name }}-{{ .Chart.AppVersion }}
+  name: {{ .Release.Name }}-{{ .Values.backend.name }}-{{ .Chart.AppVersion }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/name: {{ .Values.backend.labels.name }}
     app.kubernetes.io/component: {{ .Values.backend.labels.component }}

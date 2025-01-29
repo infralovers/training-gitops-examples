@@ -2,7 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}-{{ .Chart.AppVersion }}
+  name: {{ .Release.Name }}-{{ .Values.frontend.name }}-{{ .Chart.AppVersion }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/name: {{ .Values.frontend.labels.name }}
     app.kubernetes.io/component: {{ .Values.frontend.labels.component }}
@@ -23,7 +24,7 @@ spec:
         image: {{ .Values.frontend.containerRegistry }}/{{ .Values.frontend.containerImage}}:{{ .Chart.AppVersion }}
         env:
         - name: REDIS-SERVICE-NAME
-          value: {{ .Values.backend.name }}-{{ .Chart.AppVersion }}
+          value: {{ .Release.Name }}-{{ .Values.backend.name }}-{{ .Chart.AppVersion }}
         ports:
         - name: http-server
           containerPort: {{ .Values.frontend.port }}

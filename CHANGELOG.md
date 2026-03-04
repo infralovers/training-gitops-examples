@@ -1,3 +1,16 @@
+## 1.1.0 (2026-03-04)
+
+#### Feature
+
+* reorganize example code (3e32471b)
+
+#### Bug Fixes
+
+* container workflow enable/disable registries (1be2bbc1)
+* update workflow (265964a1)
+* s/bases/resources (93767c36)
+
+
 ## 1.0.1 (2024-12-06)
 
 #### Bug Fixes
